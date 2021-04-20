@@ -1,7 +1,7 @@
-export default {
+const dark = {
     title: 'dark',
 
-    color: {
+    colors: {
         primary: '#1B1F38',
         secondary: '#252A48',
         tertiary: '#313862',
@@ -15,3 +15,5 @@ export default {
         warning: '#E44C4E'
     }
 }
+
+export default dark
