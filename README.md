@@ -1,4 +1,4 @@
-To run the project in development mode:
+To run the project:
 
 ### `yarn start`
 
