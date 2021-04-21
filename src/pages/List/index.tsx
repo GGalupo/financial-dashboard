@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useMemo } from 'react'
 
 import ContentHeader from '../../components/ContentHeader'
 import SelectInput from '../../components/SelectInput'
@@ -6,7 +6,27 @@ import FinancialCard from '../../components/FinancialCard'
 
 import { Container, Content, Filters } from './styles'
 
-const List: React.FC = () => {
+interface IRouteParams {
+    match: {
+        params: {
+            type: string // same name we set in routes
+        }
+    }
+}
+
+
+const List: React.FC<IRouteParams> = ({ match }) => {
+    const { type } = match.params
+
+    const titleProps = useMemo(() => {
+        return type === 'income' ? {
+            title: 'Income',
+            lineColor: '#F7931B'    
+        } : {
+            title: 'Expenses',
+            lineColor: '#E44C4E'
+        }
+    },[type])
 
     const months = [
         {value: 1, label: 'January'},
@@ -23,7 +43,7 @@ const List: React.FC = () => {
     return (
 
         <Container>
-            <ContentHeader title="Expenses" lineColor="#F7931B">
+            <ContentHeader title={titleProps.title} lineColor={titleProps.lineColor}>
                 <SelectInput options={months}/>
                 <SelectInput options={years}/>
             </ContentHeader>
