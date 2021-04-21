@@ -22,67 +22,7 @@ const List: React.FC = () => {
             </ContentHeader>
             <Content>
                 <FinancialCard
-                    cardColor="#313862" tagColor="#E44C4E"
-                    title="Some bill" subtitle="01/01/2000"
-                    amount="$50,00"
-                />
-                <FinancialCard
-                    cardColor="#313862" tagColor="#E44C4E"
-                    title="Some bill" subtitle="01/01/2000"
-                    amount="$50,00"
-                />
-                <FinancialCard
-                    cardColor="#313862" tagColor="#E44C4E"
-                    title="Some bill" subtitle="01/01/2000"
-                    amount="$50,00"
-                />
-                <FinancialCard
-                    cardColor="#313862" tagColor="#E44C4E"
-                    title="Some bill" subtitle="01/01/2000"
-                    amount="$50,00"
-                />
-                <FinancialCard
-                    cardColor="#313862" tagColor="#E44C4E"
-                    title="Some bill" subtitle="01/01/2000"
-                    amount="$50,00"
-                />
-                <FinancialCard
-                    cardColor="#313862" tagColor="#E44C4E"
-                    title="Some bill" subtitle="01/01/2000"
-                    amount="$50,00"
-                />
-                <FinancialCard
-                    cardColor="#313862" tagColor="#E44C4E"
-                    title="Some bill" subtitle="01/01/2000"
-                    amount="$50,00"
-                />
-                <FinancialCard
-                    cardColor="#313862" tagColor="#E44C4E"
-                    title="Some bill" subtitle="01/01/2000"
-                    amount="$50,00"
-                />
-                <FinancialCard
-                    cardColor="#313862" tagColor="#E44C4E"
-                    title="Some bill" subtitle="01/01/2000"
-                    amount="$50,00"
-                />
-                <FinancialCard
-                    cardColor="#313862" tagColor="#E44C4E"
-                    title="Some bill" subtitle="01/01/2000"
-                    amount="$50,00"
-                />
-                <FinancialCard
-                    cardColor="#313862" tagColor="#E44C4E"
-                    title="Some bill" subtitle="01/01/2000"
-                    amount="$50,00"
-                />
-                <FinancialCard
-                    cardColor="#313862" tagColor="#E44C4E"
-                    title="Some bill" subtitle="01/01/2000"
-                    amount="$50,00"
-                />
-                <FinancialCard
-                    cardColor="#313862" tagColor="#E44C4E"
+                    tagColor="#E44C4E"
                     title="Some bill" subtitle="01/01/2000"
                     amount="$50,00"
                 />
