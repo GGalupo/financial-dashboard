@@ -17,7 +17,7 @@ export const Container = styled.li`
 
     cursor: pointer;
 
-    transition: .4s;
+    transition: all .3s;
 
     position: relative;
 
