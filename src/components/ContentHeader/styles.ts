@@ -15,14 +15,15 @@ export const Container = styled.div`
 
 export const TitleContainer = styled.div<ITitleContainerProps>`
     > h1 {
-        color: ${props => props.theme.colors.white}
+        color: ${props => props.theme.colors.white};
     }
 
     &::after {
         content: '';
         display: block;
         width: 55px;
-        border-bottom: 10px solid ${props => props.lineColor}
+        border-bottom: 10px solid ${props => props.lineColor};
+        margin-top: 2px;
     }
 `
 
