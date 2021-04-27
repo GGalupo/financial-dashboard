@@ -33,6 +33,8 @@ interface IData {
 
 const List: React.FC<IRouteParams> = ({ match }) => {
     const [data, setData] = useState<IData[]>([])
+    const [monthSelected, setMonthSelected] = useState<string>(String(new Date().getMonth() + 1))
+    const [yearSelected, setYearSelected] = useState<string>(String(new Date().getFullYear()))
 
     const { type } = match.params
 
@@ -81,8 +83,16 @@ const List: React.FC<IRouteParams> = ({ match }) => {
 
         <Container>
             <ContentHeader title={loadedProps.title} lineColor={loadedProps.lineColor}>
-                <SelectInput options={months}/>
-                <SelectInput options={years}/>
+                <SelectInput
+                    options={months}
+                    onChange={(e => setMonthSelected(e.target.value))}
+                    defaultValue={monthSelected}
+                />
+                <SelectInput
+                    options={years}
+                    onChange={(e => setYearSelected(e.target.value))}
+                    defaultValue={yearSelected}
+                />
             </ContentHeader>
             <Filters>
                 <button type="button"
