@@ -10,6 +10,7 @@ import expenses from '../../files/expenses'
 
 import formatCurrency from '../../utils/formatCurrency'
 import formatDate from '../../utils/formatDate'
+import monthsList from '../../utils/months'
 
 import { Container, Content, Filters } from './styles'
 
@@ -50,26 +51,36 @@ const List: React.FC<IRouteParams> = ({ match }) => {
         }
     },[type])
 
-    const months = [
-        {value: 1, label: 'January'},
-        {value: 2, label: 'February'},
-        {value: 3, label: 'March'},
-        {value: 4, label: 'April'},
-        {value: 5, label: 'May'},
-        {value: 6, label: 'June'},
-        {value: 7, label: 'July'},
-        {value: 8, label: 'August'},
-        {value: 9, label: 'September'},
-        {value: 10, label: 'October'},
-        {value: 11, label: 'November'},
-        {value: 12, label: 'December'}
-    ]
+    const years = useMemo(() => {
+        let yearsWithData: number[] = []
 
-    const years = [
-        {value: 2021, label: '2021'},
-        {value: 2020, label: '2020'},
-        {value: 2019, label: '2019'}
-    ]
+        const { fileLoaded } = loadedProps
+
+        fileLoaded.forEach(item => {
+            const date = new Date(item.date)
+            const year = date.getFullYear()
+
+            if (!yearsWithData.includes(year)) {
+                yearsWithData.push(year)
+            }
+        })
+
+        return yearsWithData.map(year => {
+            return {
+                value: year,
+                label: year
+            }
+        })
+    }, [loadedProps])
+
+    const months = useMemo(() => {
+        return monthsList.map((month, index) => {
+            return {
+                value: index + 1,
+                label: month 
+            }  
+        })
+    },[])
 
     useEffect(() => {
         const { fileLoaded } = loadedProps
