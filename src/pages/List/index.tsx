@@ -8,6 +8,9 @@ import FinancialCard from '../../components/FinancialCard'
 import income from '../../files/income'
 import expenses from '../../files/expenses'
 
+import formatCurrency from '../../utils/formatCurrency'
+import formatDate from '../../utils/formatDate'
+
 import { Container, Content, Filters } from './styles'
 
 interface IRouteParams {
@@ -64,9 +67,9 @@ const List: React.FC<IRouteParams> = ({ match }) => {
             return {
                 id: uuidv4(), 
                 description: item.description,
-                amountFormatted: item.amount,
+                amountFormatted: formatCurrency(Number(item.amount)),
                 repetition: item.repetition,
-                dateFormatted: item.date,
+                dateFormatted: formatDate(item.date),
                 tagColor: item.repetition === 'recurring' ? '#E44C4E'  : '#4e41f0'
             }
         })
