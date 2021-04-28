@@ -36,6 +36,7 @@ const List: React.FC<IRouteParams> = ({ match }) => {
     const [data, setData] = useState<IData[]>([])
     const [monthSelected, setMonthSelected] = useState<string>(String(new Date().getMonth() + 1))
     const [yearSelected, setYearSelected] = useState<string>(String(new Date().getFullYear()))
+    const [selectedRepetition, setSelectedRepetition] = useState<String[]>(['recurring', 'nonRecurring'])
 
     const { type } = match.params
 
@@ -84,6 +85,17 @@ const List: React.FC<IRouteParams> = ({ match }) => {
         })
     },[])
 
+    const handleRepetitionFilter = (repetition: string) => {
+        const alreadySelected = selectedRepetition.findIndex(item => item === repetition)
+
+        if (alreadySelected >= 0) {
+            const keepFilter = selectedRepetition.filter(item => item !== repetition)
+            setSelectedRepetition(keepFilter)
+        } else {
+            setSelectedRepetition([...selectedRepetition, repetition])
+        }
+    }
+
     useEffect(() => {
         const { fileLoaded } = loadedProps
 
@@ -92,7 +104,7 @@ const List: React.FC<IRouteParams> = ({ match }) => {
             const month = String(date.getMonth() + 1)
             const year = String(date.getFullYear())
 
-            return month === monthSelected && year === yearSelected
+            return month === monthSelected && year === yearSelected && selectedRepetition.includes(item.repetition)
         })
 
         const filteredData = filteredDate.map(item => {
@@ -107,7 +119,7 @@ const List: React.FC<IRouteParams> = ({ match }) => {
         })
 
         setData(filteredData)
-    },[loadedProps, monthSelected, yearSelected])
+    },[loadedProps, monthSelected, yearSelected, selectedRepetition])
 
     return (
 
@@ -124,12 +136,22 @@ const List: React.FC<IRouteParams> = ({ match }) => {
                 />
             </ContentHeader>
             <Filters>
-                <button type="button"
-                    className="tag-filter tag-filter-recurring">
+                <button
+                    type="button"
+                    className={`tag-filter tag-filter-recurring
+                        ${selectedRepetition.includes('recurring') && 'filter-on'}`
+                    }
+                    onClick={() => handleRepetitionFilter('recurring')}
+                >
                     Recurring
                 </button>
-                <button type="button"
-                    className="tag-filter tag-filter-non-recurring">
+                <button
+                    type="button"
+                    className={`tag-filter tag-filter-non-recurring
+                        ${selectedRepetition.includes('nonRecurring') && 'filter-on'}`
+                    }
+                    onClick={() => handleRepetitionFilter('nonRecurring')}
+                >
                     Non-Recurring
                 </button>
             </Filters>

@@ -25,6 +25,7 @@ export const Filters = styled.div`
         margin: 0 10px;
 
         transition: opacity .3;
+        opacity: 0.4;
 
         :hover {
             opacity: .7;
@@ -45,5 +46,9 @@ export const Filters = styled.div`
             width: 50px;
             margin: 0 auto;
             border-bottom: 10px solid ${props => props.theme.colors.success}
+    }
+
+    .filter-on {
+        opacity: 1;
     }
 `
