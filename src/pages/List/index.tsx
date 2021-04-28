@@ -65,6 +65,8 @@ const List: React.FC<IRouteParams> = ({ match }) => {
             }
         })
 
+        yearsWithData.sort((a, b) => b - a)
+
         return yearsWithData.map(year => {
             return {
                 value: year,
@@ -119,7 +121,6 @@ const List: React.FC<IRouteParams> = ({ match }) => {
                 <SelectInput
                     options={years}
                     onChange={(e => setYearSelected(e.target.value))}
-                    defaultValue={yearSelected}
                 />
             </ContentHeader>
             <Filters>

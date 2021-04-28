@@ -5,9 +5,9 @@ const income = [
   { "description": "Freelancer site", "amount": "900.23",  "type": "income", "repetition": "nonRecurring",   "date": "2020-02-21" }, 
   { "description": "Freelancer app",  "amount": "950.92",  "type": "income", "repetition": "nonRecurring",   "date": "2020-02-23" }, 
   { "description": "Salary",     "amount": "2500.25", "type": "income", "repetition": "recurring", "date": "2020-03-10" }, 
-  { "description": "Salary",     "amount": "2500.18", "type": "income", "repetition": "recurring", "date": "2020-04-10" }, 
+  { "description": "Salary",     "amount": "2500.18", "type": "income", "repetition": "recurring", "date": "2019-05-10" }, 
   { "description": "Salary",     "amount": "2500.15", "type": "income", "repetition": "recurring", "date": "2020-05-10" }, 
   { "description": "Salary",     "amount": "2500.12", "type": "income", "repetition": "recurring", "date": "2020-06-10" }, 
-  { "description": "Salary",     "amount": "2500.00", "type": "income", "repetition": "recurring", "date": "2020-07-10" }]
+  { "description": "Salary",     "amount": "2500.00", "type": "income", "repetition": "recurring", "date": "2021-07-10" }]
 
   export default income

@@ -27,7 +27,7 @@ const expenses = [
   {"description":"Compras do mês",        "amount":"600.00","type":"expenses","repetition":"recurring","date":"2020-04-25"},
   {"description":"Parcela do Celular 3/5","amount":"150.99","type":"expenses","repetition":"nonRecurring",  "date":"2020-04-26"},
   {"description":"Ebook de React Js",     "amount":"85.95", "type":"expenses","repetition":"nonRecurring",  "date":"2020-04-13"},
-  {"description":"Energia elétrica",      "amount":"125.55","type":"expenses","repetition":"recurring","date":"2020-05-10"},
+  {"description":"Energia elétrica",      "amount":"125.55","type":"expenses","repetition":"recurring","date":"2019-05-10"},
   {"description":"Água",                  "amount":"90.15", "type":"expenses","repetition":"recurring","date":"2020-05-15"},
   {"description":"Telefone",              "amount":"99.99", "type":"expenses","repetition":"recurring","date":"2020-05-23"},
   {"description":"Plano de Saúde",        "amount":"300.00","type":"expenses","repetition":"recurring","date":"2020-05-23"},
@@ -46,8 +46,8 @@ const expenses = [
   {"description":"Telefone",              "amount":"99.99", "type":"expenses","repetition":"recurring","date":"2020-07-23"},
   {"description":"Plano de Saúde",        "amount":"300.00","type":"expenses","repetition":"recurring","date":"2020-07-23"},
   {"description":"Compras do mês",        "amount":"700.00","type":"expenses","repetition":"recurring","date":"2020-07-25"},
-  {"description":"Cafeteira",             "amount":"250.00","type":"expenses","repetition":"nonRecurring",  "date":"2020-07-26"},
-  {"description":"Pizza",                 "amount":"60.00", "type":"expenses","repetition":"nonRecurring",  "date":"2021-07-19"}
+  {"description":"Cafeteira",             "amount":"250.00","type":"expenses","repetition":"nonRecurring",  "date":"2020-04-26"},
+  {"description":"Pizza",                 "amount":"60.00", "type":"expenses","repetition":"nonRecurring",  "date":"2021-01-19"}
 ]
 
 export default expenses
