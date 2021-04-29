@@ -86,13 +86,13 @@ const List: React.FC<IRouteParams> = ({ match }) => {
     },[])
 
     const handleRepetitionFilter = (repetition: string) => {
-        const alreadySelected = selectedRepetition.findIndex(item => item === repetition)
 
-        if (alreadySelected >= 0) {
-            const keepFilter = selectedRepetition.filter(item => item !== repetition)
-            setSelectedRepetition(keepFilter)
+        if (repetition === 'recurring' && selectedRepetition.includes('nonRecurring')) {
+            setSelectedRepetition(['recurring'])
+        } else if (repetition === 'nonRecurring' && selectedRepetition.includes('recurring')) {
+            setSelectedRepetition(['nonRecurring'])
         } else {
-            setSelectedRepetition([...selectedRepetition, repetition])
+            setSelectedRepetition(['recurring', 'nonRecurring'])
         }
     }
 
