@@ -35,14 +35,14 @@ const List: React.FC<IRouteParams> = ({ match }) => {
     const [data, setData] = useState<IData[]>([])
     const [monthSelected, setMonthSelected] = useState<number>(new Date().getMonth() + 1)
     const [yearSelected, setYearSelected] = useState<number>(new Date().getFullYear())
-    const [repetitionFilterSelected, setrepetitionFilterSelected] = useState<String[]>(['recurring', 'nonRecurring'])
+    const [repetitionFilterSelected, setRepetitionFilterSelected] = useState<String[]>(['recurring', 'nonRecurring'])
 
     const incomeOrExpense = match.params.type
 
     const loadedData = useMemo(() => {
         return incomeOrExpense === 'income' ? {
             title: 'Income',
-            lineColor: '#F7931B',
+            lineColor: '#4E41F0',
             fileLoaded: income       
         } : {
             title: 'Expenses',
@@ -87,11 +87,11 @@ const List: React.FC<IRouteParams> = ({ match }) => {
     const handleRepetitionFilter = (repetition: string) => {
 
         if (repetition === 'recurring' && repetitionFilterSelected.includes('nonRecurring')) {
-            setrepetitionFilterSelected(['recurring'])
+            setRepetitionFilterSelected(['recurring'])
         } else if (repetition === 'nonRecurring' && repetitionFilterSelected.includes('recurring')) {
-            setrepetitionFilterSelected(['nonRecurring'])
+            setRepetitionFilterSelected(['nonRecurring'])
         } else {
-            setrepetitionFilterSelected(['recurring', 'nonRecurring'])
+            setRepetitionFilterSelected(['recurring', 'nonRecurring'])
         }
     }
 
