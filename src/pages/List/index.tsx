@@ -31,17 +31,16 @@ interface IData {
     tagColor: string
 }
 
-
 const List: React.FC<IRouteParams> = ({ match }) => {
     const [data, setData] = useState<IData[]>([])
-    const [monthSelected, setMonthSelected] = useState<string>(String(new Date().getMonth() + 1))
-    const [yearSelected, setYearSelected] = useState<string>(String(new Date().getFullYear()))
-    const [selectedRepetition, setSelectedRepetition] = useState<String[]>(['recurring', 'nonRecurring'])
+    const [monthSelected, setMonthSelected] = useState<number>(new Date().getMonth() + 1)
+    const [yearSelected, setYearSelected] = useState<number>(new Date().getFullYear())
+    const [repetitionFilterSelected, setrepetitionFilterSelected] = useState<String[]>(['recurring', 'nonRecurring'])
 
-    const { type } = match.params
+    const incomeOrExpense = match.params.type
 
-    const loadedProps = useMemo(() => {
-        return type === 'income' ? {
+    const loadedData = useMemo(() => {
+        return incomeOrExpense === 'income' ? {
             title: 'Income',
             lineColor: '#F7931B',
             fileLoaded: income       
@@ -50,12 +49,12 @@ const List: React.FC<IRouteParams> = ({ match }) => {
             lineColor: '#E44C4E',
             fileLoaded: expenses
         }
-    },[type])
+    },[incomeOrExpense])
 
     const years = useMemo(() => {
         let yearsWithData: number[] = []
 
-        const { fileLoaded } = loadedProps
+        const { fileLoaded } = loadedData
 
         fileLoaded.forEach(item => {
             const date = new Date(item.date)
@@ -74,7 +73,7 @@ const List: React.FC<IRouteParams> = ({ match }) => {
                 label: year
             }
         })
-    }, [loadedProps])
+    }, [loadedData])
 
     const months = useMemo(() => {
         return monthsList.map((month, index) => {
@@ -87,24 +86,42 @@ const List: React.FC<IRouteParams> = ({ match }) => {
 
     const handleRepetitionFilter = (repetition: string) => {
 
-        if (repetition === 'recurring' && selectedRepetition.includes('nonRecurring')) {
-            setSelectedRepetition(['recurring'])
-        } else if (repetition === 'nonRecurring' && selectedRepetition.includes('recurring')) {
-            setSelectedRepetition(['nonRecurring'])
+        if (repetition === 'recurring' && repetitionFilterSelected.includes('nonRecurring')) {
+            setrepetitionFilterSelected(['recurring'])
+        } else if (repetition === 'nonRecurring' && repetitionFilterSelected.includes('recurring')) {
+            setrepetitionFilterSelected(['nonRecurring'])
         } else {
-            setSelectedRepetition(['recurring', 'nonRecurring'])
+            setrepetitionFilterSelected(['recurring', 'nonRecurring'])
+        }
+    }
+
+    const handleMonthSelected = (month: string) => {
+        try {
+            const parseMonth = Number(month)
+            setMonthSelected(parseMonth)
+        } catch(err) {
+            throw new Error('Invalid month value.')
+        }
+    }
+
+    const handleYearSelected = (year: string) => {
+        try {
+            const parseYear = Number(year)
+            setYearSelected(parseYear)
+        } catch(err) {
+            throw new Error('Invalid year value.')
         }
     }
 
     useEffect(() => {
-        const { fileLoaded } = loadedProps
+        const { fileLoaded } = loadedData
 
         const filteredDate = fileLoaded.filter(item => {
             const date = new Date(item.date)
-            const month = String(date.getMonth() + 1)
-            const year = String(date.getFullYear())
+            const month = date.getMonth() + 1
+            const year = date.getFullYear()
 
-            return month === monthSelected && year === yearSelected && selectedRepetition.includes(item.repetition)
+            return month === monthSelected && year === yearSelected && repetitionFilterSelected.includes(item.repetition)
         })
 
         const filteredData = filteredDate.map(item => {
@@ -119,27 +136,28 @@ const List: React.FC<IRouteParams> = ({ match }) => {
         })
 
         setData(filteredData)
-    },[loadedProps, monthSelected, yearSelected, selectedRepetition])
+    },[loadedData, monthSelected, yearSelected, repetitionFilterSelected])
 
     return (
-
         <Container>
-            <ContentHeader title={loadedProps.title} lineColor={loadedProps.lineColor}>
+            <ContentHeader title={loadedData.title} lineColor={loadedData.lineColor}>
                 <SelectInput
                     options={months}
-                    onChange={(e => setMonthSelected(e.target.value))}
+                    onChange={(e => handleMonthSelected(e.target.value))}
                     defaultValue={monthSelected}
                 />
                 <SelectInput
                     options={years}
-                    onChange={(e => setYearSelected(e.target.value))}
+                    onChange={(e => handleYearSelected(e.target.value))}
                 />
             </ContentHeader>
             <Filters>
                 <button
                     type="button"
-                    className={`tag-filter tag-filter-recurring
-                        ${selectedRepetition.includes('recurring') && 'filter-on'}`
+                    className={
+                        `tag-filter
+                        tag-filter-recurring
+                        ${repetitionFilterSelected.includes('recurring') && 'filter-on'}`
                     }
                     onClick={() => handleRepetitionFilter('recurring')}
                 >
@@ -147,8 +165,9 @@ const List: React.FC<IRouteParams> = ({ match }) => {
                 </button>
                 <button
                     type="button"
-                    className={`tag-filter tag-filter-non-recurring
-                        ${selectedRepetition.includes('nonRecurring') && 'filter-on'}`
+                    className={`tag-filter
+                        tag-filter-non-recurring
+                        ${repetitionFilterSelected.includes('nonRecurring') && 'filter-on'}`
                     }
                     onClick={() => handleRepetitionFilter('nonRecurring')}
                 >
