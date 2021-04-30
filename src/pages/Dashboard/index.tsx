@@ -2,13 +2,14 @@ import React, { useMemo, useState } from 'react'
 
 import ContentHeader from '../../components/ContentHeader'
 import SelectInput from '../../components/SelectInput'
+import DashboardInfoCard from '../../components/DashboardInfoCard'
 
 import income from '../../files/income'
 import expenses from '../../files/expenses'
 
 import monthsList from '../../utils/months'
 
-import { Container } from './styles'
+import { Container, Content  } from './styles'
 
 const Dashboard: React.FC = () => {
     const [monthSelected, setMonthSelected] = useState<number>(new Date().getMonth() + 1)
@@ -76,6 +77,32 @@ const Dashboard: React.FC = () => {
                         onChange={(e => handleYearSelected(e.target.value))}
                     />
             </ContentHeader>
+            <Content>
+                <DashboardInfoCard
+                    title="Balance"
+                    amount={2000.00}
+                    footerText="Based on your income and expenses for this month and year."
+                    icon="dollar"
+                    color='#4E41F0'
+                >
+                </DashboardInfoCard>
+                <DashboardInfoCard
+                    title="Income"
+                    amount={5000.00}
+                    footerText="Based on your income for this month and year."
+                    icon="arrowUp"
+                    color='#F7931B'
+                >
+                </DashboardInfoCard>
+                <DashboardInfoCard
+                    title="Expenses"
+                    amount={3000.00}
+                    footerText="Based on your expenses for this month and year."
+                    icon="arrowDown"
+                    color='#E44C4E'
+                >
+                </DashboardInfoCard>
+            </Content>
         </Container>
     )
 }
