@@ -1,7 +1,5 @@
 import React from 'react'
 
-import happyEmoji from '../../assets/happy.svg'
-
 import { Container, CardHeader, CardFooter } from './styles'
 
 interface IDashboardBalanceSituation {
