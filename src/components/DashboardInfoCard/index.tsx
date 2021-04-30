@@ -38,8 +38,8 @@ const DashboardInfoCard: React.FC<IDashboardInfoCard> = ({
 
     return (
         <Container color={color}>
-            <span>{title}</span>
-            <h2>
+            <h2>{title}</h2>
+            <span>
                 <CountUp
                     end={amount}
                     prefix={"R$ "}
@@ -48,7 +48,7 @@ const DashboardInfoCard: React.FC<IDashboardInfoCard> = ({
                     decimals={2}
                     duration={1}
                 />
-            </h2>
+            </span>
             <small>{footerText}</small>
             <img src={iconSelected()} alt={title}/>
         </Container>

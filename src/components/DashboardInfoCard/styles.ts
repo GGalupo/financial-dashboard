@@ -19,6 +19,9 @@ export const Container = styled.div<IContainerProps>`
     position: relative;
     overflow: hidden;
 
+    display: flex;
+    flex-direction: column;
+
     > img {
         position: absolute;
         top: -10px;
@@ -29,9 +32,14 @@ export const Container = styled.div<IContainerProps>`
         opacity: 0.3;
     }
 
-    > span {
+    > h2 {
         font-size: 18px;
         font-weight: 500;
+    }
+
+    > span {
+        font-size: 24px;
+        font-weight: 600;
     }
 
     > small {

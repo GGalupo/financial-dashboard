@@ -3,11 +3,14 @@ import React, { useMemo, useState } from 'react'
 import ContentHeader from '../../components/ContentHeader'
 import SelectInput from '../../components/SelectInput'
 import DashboardInfoCard from '../../components/DashboardInfoCard'
+import DashboardBalanceSituation from '../../components/DashboardBalanceSituation'
 
 import income from '../../files/income'
 import expenses from '../../files/expenses'
 
 import monthsList from '../../utils/months'
+
+import happyIcon from '../../assets/happy.svg'
 
 import { Container, Content  } from './styles'
 
@@ -78,30 +81,37 @@ const Dashboard: React.FC = () => {
                     />
             </ContentHeader>
             <Content>
-                <DashboardInfoCard
-                    title="Balance"
-                    amount={2000.00}
-                    footerText="Based on your income and expenses for this month and year."
-                    icon="dollar"
-                    color='#4E41F0'
-                >
-                </DashboardInfoCard>
-                <DashboardInfoCard
-                    title="Income"
-                    amount={5000.00}
-                    footerText="Based on your income for this month and year."
-                    icon="arrowUp"
-                    color='#F7931B'
-                >
-                </DashboardInfoCard>
-                <DashboardInfoCard
-                    title="Expenses"
-                    amount={3000.00}
-                    footerText="Based on your expenses for this month and year."
-                    icon="arrowDown"
-                    color='#E44C4E'
-                >
-                </DashboardInfoCard>
+                    <DashboardInfoCard
+                        title="Balance"
+                        amount={2000.00}
+                        footerText="Based on your income and expenses for this month and year."
+                        icon="dollar"
+                        color='#4E41F0'
+                    >
+                    </DashboardInfoCard>
+                    <DashboardInfoCard
+                        title="Income"
+                        amount={5000.00}
+                        footerText="Based on your income for this month and year."
+                        icon="arrowUp"
+                        color='#F7931B'
+                    >
+                    </DashboardInfoCard>
+                    <DashboardInfoCard
+                        title="Expenses"
+                        amount={3000.00}
+                        footerText="Based on your expenses for this month and year."
+                        icon="arrowDown"
+                        color='#E44C4E'
+                    >
+                    </DashboardInfoCard>
+                    {/* Static props for testing. */}
+                    <DashboardBalanceSituation
+                        title={"Good job!"}
+                        description={"Your balance is positive."}
+                        footerMsg={"Consider investing some money!"}
+                        icon={happyIcon}
+                    />
             </Content>
         </Container>
     )
