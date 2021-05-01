@@ -4,7 +4,7 @@ import ContentHeader from '../../components/ContentHeader'
 import SelectInput from '../../components/SelectInput'
 import DashboardInfoCard from '../../components/DashboardInfoCard'
 import DashboardBalanceSituation from '../../components/DashboardBalanceSituation'
-import PieChart from '../../components/PieChart'
+import PieChartCard from '../../components/PieChartCard'
 
 import income from '../../files/income'
 import expenses from '../../files/expenses'
@@ -123,6 +123,50 @@ const Dashboard: React.FC = () => {
         }
     }, [totalBalance])
 
+    const expensesPercentBasedOnIncome = useMemo(() => {
+        let data = []
+
+        if (totalIncome < totalExpenses) {
+            data = [
+                {
+                    value: 100,
+                    percent: ">100%",
+                    color: "#E44C4E"
+                },
+                {
+                    value: 0,
+                    color: '#F7931B'
+                }
+            ]
+        } else if (totalIncome === totalExpenses) {
+            data = [
+                {
+                    value: 100,
+                    percent: "100%",
+                    color: "#E44C4E"
+                },
+                {
+                    value: 0,
+                    color: '#F7931B'
+                }
+            ]
+        } else {
+            data = [
+                {
+                    value: totalExpenses,
+                    percent: (((totalExpenses / totalIncome) * 100).toFixed(1)) + '%',
+                    color: "#E44C4E"
+                },
+                {
+                    value: (totalIncome - totalExpenses),
+                    color: '#F7931B'
+                }
+            ]
+        }
+
+        return data
+    }, [totalIncome, totalExpenses])
+
     const handleMonthSelected = (month: string) => {
         try {
             const parseMonth = Number(month)
@@ -186,9 +230,7 @@ const Dashboard: React.FC = () => {
                         footerMsg={balanceMessage.footerMsg}
                         icon={balanceMessage.icon}
                     />
-                    <PieChart>
-                        
-                    </PieChart>
+                    <PieChartCard data={expensesPercentBasedOnIncome} />
             </Content>
         </Container>
     )

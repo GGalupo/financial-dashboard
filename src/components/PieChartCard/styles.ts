@@ -13,31 +13,46 @@ export const Container = styled.div`
 
     margin: 10px 0;
     border-radius: 8px;
+
+    display: flex;
 `
 
 export const CardLeft = styled.div`
     padding: 30px 20px;
+    height: 100%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
 
     > h3 {
         font-size: 25px;
-        margin-bottom: 40px;
+    }
+
+    > span {
+        font-size: 14px;
+        color: ${props => props.theme.colors.gray};
+        font-style: italic;
     }
 `
 
 export const CardRight = styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
+    flex: 1;
 `
 
 export const CaptionContainer = styled.ul`
     list-style: none;
-    margin-top: 20px;
 `
 
 export const Caption = styled.li<ICaptionProps>`
     display: flex;
     align-items: center;
 
-    margin-bottom: 18px;
 
 
     > div {
@@ -47,7 +62,7 @@ export const Caption = styled.li<ICaptionProps>`
         height: 40px;
         border-radius: 5px;
 
-        font-size: 16px;
+        font-size: 13px;
         font-weight: 600;
 
         display: flex;
