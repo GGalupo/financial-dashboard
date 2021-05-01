@@ -4,6 +4,7 @@ import ContentHeader from '../../components/ContentHeader'
 import SelectInput from '../../components/SelectInput'
 import DashboardInfoCard from '../../components/DashboardInfoCard'
 import DashboardBalanceSituation from '../../components/DashboardBalanceSituation'
+import PieChart from '../../components/PieChart'
 
 import income from '../../files/income'
 import expenses from '../../files/expenses'
@@ -179,13 +180,15 @@ const Dashboard: React.FC = () => {
                         color='#E44C4E'
                     >
                     </DashboardInfoCard>
-                    {/* Static props for testing. */}
                     <DashboardBalanceSituation
                         title={balanceMessage.title}
                         description={balanceMessage.description}
                         footerMsg={balanceMessage.footerMsg}
                         icon={balanceMessage.icon}
                     />
+                    <PieChart>
+                        
+                    </PieChart>
             </Content>
         </Container>
     )

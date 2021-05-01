@@ -149,6 +149,7 @@ const List: React.FC<IRouteParams> = ({ match }) => {
                 <SelectInput
                     options={years}
                     onChange={(e => handleYearSelected(e.target.value))}
+                    defaultValue={yearSelected}
                 />
             </ContentHeader>
             <Filters>
