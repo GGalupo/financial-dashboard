@@ -5,6 +5,7 @@ import SelectInput from '../../components/SelectInput'
 import DashboardInfoCard from '../../components/DashboardInfoCard'
 import DashboardBalanceSituation from '../../components/DashboardBalanceSituation'
 import PieChartCard from '../../components/PieChartCard'
+import BalanceHistory from '../../components/BalanceHistory'
 
 import income from '../../files/income'
 import expenses from '../../files/expenses'
@@ -231,6 +232,7 @@ const Dashboard: React.FC = () => {
                         icon={balanceMessage.icon}
                     />
                     <PieChartCard data={expensesPercentBasedOnIncome} />
+                    {/* <BalanceHistory /> */}
             </Content>
         </Container>
     )

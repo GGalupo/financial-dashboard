@@ -40,6 +40,8 @@ const PieChartCard: React.FC<IPieChartCardProps> = ({ data }) => (
                     <Pie
                         data={data}
                         dataKey="value"
+                        startAngle={90}
+                        endAngle={450}
                     >
                         {data.map((item, index) => (
                             <Cell key={`cell-${index}`} fill={item.color} />
