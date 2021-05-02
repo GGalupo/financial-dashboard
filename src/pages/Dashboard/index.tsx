@@ -168,6 +168,74 @@ const Dashboard: React.FC = () => {
         return data
     }, [totalIncome, totalExpenses])
 
+    const balanceHistoryData = useMemo(() => {
+        return monthsList.map((_, monthIndex) => {
+
+            let monthIncome = 0
+            income.forEach(item => {
+                const date = new Date(item.date)
+                const month = date.getMonth()
+                const year = date.getFullYear()
+
+                if(month === monthIndex && year === yearSelected) {
+                    try {
+                        monthIncome += Number(item.amount)
+                    } catch {
+                        throw new Error("Value can't be converted to numeric.")
+                    }
+                }
+            })
+
+            let monthExpenses = 0
+
+            expenses.forEach(item => {
+                const date = new Date(item.date)
+                const month = date.getMonth()
+                const year = date.getFullYear()
+
+                if(month === monthIndex && year === yearSelected) {
+                    try {
+                        monthExpenses += Number(item.amount)
+                    } catch {
+                        throw new Error("Value can't be converted to numeric.")
+                    }
+                }
+            })
+
+            return {
+                monthNumber: monthIndex,
+                monthName: monthsList[monthIndex].substr(0, 3),
+                monthIncome,
+                monthExpenses
+            }
+        }).filter(item => {
+            const lastYear = years[0].value
+            let lastMonth = 0
+
+            expenses.forEach(item => {
+                const date = new Date(item.date)
+                const month = date.getMonth()
+                const year = date.getFullYear()
+
+                if(month > lastMonth && year === lastYear) {
+                    lastMonth = month
+                }
+            })
+
+            income.forEach(item => {
+                const date = new Date(item.date)
+                const month = date.getMonth()
+                const year = date.getFullYear()
+
+                if(month > lastMonth && year === lastYear) {
+                    lastMonth = month
+                }
+            })
+
+            return (yearSelected === lastYear && item.monthNumber <= lastMonth) || (yearSelected < lastYear)
+        })
+    }, [yearSelected, years])
+
     const handleMonthSelected = (month: string) => {
         try {
             const parseMonth = Number(month)
@@ -232,7 +300,11 @@ const Dashboard: React.FC = () => {
                         icon={balanceMessage.icon}
                     />
                     <PieChartCard data={expensesPercentBasedOnIncome} />
-                    {/* <BalanceHistory /> */}
+                    <BalanceHistory
+                        data={balanceHistoryData}
+                        lineColorExpenses="#E44C4E"
+                        lineColorIncome="#F7931B"
+                    />
             </Content>
         </Container>
     )

@@ -18,7 +18,7 @@ export const Container = styled.div`
 `
 
 export const CardLeft = styled.div`
-    padding: 30px 20px;
+    padding: 20px;
     height: 100%;
 
     display: flex;

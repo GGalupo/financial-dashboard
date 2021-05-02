@@ -46,7 +46,7 @@ const expenses = [
   {"description":"Telefone",              "amount":"99.99", "type":"expenses","repetition":"recurring","date":"2020-07-23"},
   {"description":"Plano de Saúde",        "amount":"300.00","type":"expenses","repetition":"recurring","date":"2020-07-23"},
   {"description":"Compras do mês",        "amount":"700.00","type":"expenses","repetition":"recurring","date":"2020-07-25"},
-  {"description":"Cafeteira",             "amount":"250.00","type":"expenses","repetition":"nonRecurring",  "date":"2021-04-26"},
+  {"description":"Cafeteira",             "amount":"250.00","type":"expenses","repetition":"nonRecurring",  "date":"2022-04-26"},
   {"description":"Pizza",                 "amount":"60.00", "type":"expenses","repetition":"nonRecurring",  "date":"2022-01-19"}
 ]
 
