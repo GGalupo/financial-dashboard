@@ -108,6 +108,13 @@ const Dashboard: React.FC = () => {
                 footerMsg: "You should try to save money or improve your income!",
                 icon: sadIcon
             }
+        } else if (totalIncome === 0 && totalExpenses === 0) {
+            return {
+                title: "Oops!",
+                description: "No data found.",
+                footerMsg: "Looks like you don't have expenses or income for month and year selected.",
+                icon: grinningIcon
+            }
         } else if (totalBalance === 0) {
             return {
                 title: "Phew!",
@@ -123,7 +130,7 @@ const Dashboard: React.FC = () => {
                 icon: happyIcon
             }
         }
-    }, [totalBalance])
+    }, [totalBalance, totalIncome, totalExpenses])
 
     const expensesPercentBasedOnIncome = useMemo(() => {
         let data = []
