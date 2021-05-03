@@ -14,24 +14,23 @@ const DashboardBalanceSituation: React.FC<IDashboardBalanceSituation> = ({
     description,
     footerMsg,
     icon
-}) => {
-    return (
-        <Container>
-            <CardHeader>
-                <h3>
-                    {title} <img src={icon} alt={"Emoji for the following text: " + title}/>
-                </h3>
-                <p>
-                    {description}
-                </p>
-            </CardHeader>
-            <CardFooter>
-                <span>
-                    {footerMsg}
-                </span>
-            </CardFooter>
-        </Container>
-    )
-}
+}) => (
+    <Container>
+        <CardHeader>
+            <h3>
+                {title} <img src={icon} alt={"Emoji for the following text: " + title}/>
+            </h3>
+            <p>
+                {description}
+            </p>
+        </CardHeader>
+        <CardFooter>
+            <span>
+                {footerMsg}
+            </span>
+        </CardFooter>
+    </Container>
+)
+
 
 export default DashboardBalanceSituation
