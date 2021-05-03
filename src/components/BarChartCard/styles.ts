@@ -15,6 +15,7 @@ export const Container = styled.div`
 export const CardRight = styled.div`
     height: 100%;
     padding: 15px 10px;
+
     flex: 1;
 `
 

@@ -48,7 +48,7 @@ const BarChartCard: React.FC<IBarChartProps> = ({ title, data }) => (
                         cursor={{ fill: 'none' }}
                         formatter={formatCurrency}
                     />
-                    <Bar maxBarSize={150} dataKey="amount" name="Amount">
+                    <Bar maxBarSize={120} dataKey="amount" name="Amount">
                         {data.map((item, index) => (
                             <Cell
                                 key={index}
