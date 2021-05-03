@@ -29,13 +29,23 @@ interface ITheme {
 const ThemeContext = createContext<IThemeContext>({} as IThemeContext)
 
 const ThemeProvider: React.FC = ({ children }) => {
-    const [theme, setTheme] = useState<ITheme>(dark)
+    const [theme, setTheme] = useState<ITheme>(() => {
+        const savedTheme = localStorage.getItem('@financial-dashboard:theme')
+
+        if (savedTheme) {
+            return JSON.parse(savedTheme)
+        } else {
+            return dark
+        }
+    })
 
     const toggleTheme = () => {
-        if (theme.title === "dark") {
-            setTheme(light)
-        } else if (theme.title === "light") {
+        if (theme.title === "light") {
             setTheme(dark)
+            localStorage.setItem('@financial-dashboard:theme', JSON.stringify(dark))
+        } else if (theme.title === "dark") {
+            setTheme(light)
+            localStorage.setItem('@financial-dashboard:theme', JSON.stringify(light))
         }
     }
 
