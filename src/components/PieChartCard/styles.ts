@@ -71,7 +71,8 @@ export const Caption = styled.li<ICaptionProps>`
     }
 
     > span {
-        font-size: 14px;
+        font-size: 12px;
+        font-weight: 500;
 
         margin-left: 8px;
     }

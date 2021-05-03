@@ -6,6 +6,7 @@ import DashboardInfoCard from '../../components/DashboardInfoCard'
 import DashboardBalanceSituation from '../../components/DashboardBalanceSituation'
 import PieChartCard from '../../components/PieChartCard'
 import BalanceHistory from '../../components/BalanceHistory'
+import BarChartCard from '../../components/BarChartCard'
 
 import income from '../../files/income'
 import expenses from '../../files/expenses'
@@ -236,6 +237,94 @@ const Dashboard: React.FC = () => {
         })
     }, [yearSelected, years])
 
+    const expensesType = useMemo(() => {
+        let recurring = 0
+        let nonRecurring = 0
+
+        expenses.filter(expense => {
+            const date = new Date(expense.date)
+            const month = date.getMonth() + 1
+            const year = date.getFullYear()
+
+            return (month === monthSelected && year === yearSelected)
+        }).forEach(expense => {
+            if (expense.repetition === 'recurring') {
+                try {
+                    recurring += Number(expense.amount)
+                } catch {
+                    throw new Error("Value can't be converted to numeric.")
+                }
+            } else if (expense.repetition === 'nonRecurring') {
+                try {
+                    nonRecurring += Number(expense.amount)
+                } catch {
+                    throw new Error("Value can't be converted to numeric.")
+                }
+            }
+        })
+
+        const total = (recurring + nonRecurring) !== 0 ? (recurring + nonRecurring) : 1 // avoid 0/0
+
+        return [
+            {
+                name: 'Recurring',
+                amount: recurring,
+                percent: (((recurring / total) * 100).toFixed(1) + "%"),
+                color: "#F7931B"
+            },
+            {
+                name: 'Non-recurring',
+                amount: nonRecurring,
+                percent: (((nonRecurring / total) * 100).toFixed(1) + "%"),
+                color: '#E44C4E'
+            }
+        ]
+    }, [monthSelected, yearSelected])
+
+    const incomeType = useMemo(() => {
+        let recurring = 0
+        let nonRecurring = 0
+
+        income.filter(income => {
+            const date = new Date(income.date)
+            const month = date.getMonth() + 1
+            const year = date.getFullYear()
+
+            return (month === monthSelected && year === yearSelected)
+        }).forEach(income => {
+            if (income.repetition === 'recurring') {
+                try {
+                    recurring += Number(income.amount)
+                } catch {
+                    throw new Error("Value can't be converted to numeric.")
+                }
+            } else if (income.repetition === 'nonRecurring') {
+                try {
+                    nonRecurring += Number(income.amount)
+                } catch {
+                    throw new Error("Value can't be converted to numeric.")
+                }
+            }
+        })
+
+        const total = (recurring + nonRecurring) !== 0 ? (recurring + nonRecurring) : 1 // avoid 0/0
+
+        return [
+            {
+                name: 'Recurring',
+                amount: recurring,
+                percent: (((recurring / total) * 100).toFixed(1) + "%"),
+                color: "#F7931B"
+            },
+            {
+                name: 'Non-recurring',
+                amount: nonRecurring,
+                percent: (((nonRecurring / total) * 100).toFixed(1) + "%"),
+                color: '#E44C4E'
+            }
+        ]
+    }, [monthSelected, yearSelected])
+
     const handleMonthSelected = (month: string) => {
         try {
             const parseMonth = Number(month)
@@ -305,6 +394,8 @@ const Dashboard: React.FC = () => {
                         lineColorExpenses="#E44C4E"
                         lineColorIncome="#F7931B"
                     />
+                    <BarChartCard data={expensesType} title="Expenses" />
+                    <BarChartCard data={incomeType} title="Income" />
             </Content>
         </Container>
     )
