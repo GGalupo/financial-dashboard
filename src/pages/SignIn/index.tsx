@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 import Input from '../../components/Input'
 import Button from '../../components/Button'
@@ -6,6 +6,8 @@ import Button from '../../components/Button'
 import { FaGithub, FaInstagram } from 'react-icons/fa'
 import { AiFillLinkedin, AiOutlineDollar, AiOutlineUser } from 'react-icons/ai'
 import { BiLockAlt } from 'react-icons/bi'
+
+import { useAuth } from '../../hooks/auth'
 
 import {
     Container,
@@ -18,21 +20,27 @@ import {
 } from './styles'
 
 const SignIn: React.FC = () => {
+    const [email, setEmail] = useState<string>('')
+    const [password, setPassword] = useState<string>('')
+
+    const { signIn } = useAuth()
+
     return (
         <Container>
             <LogoContainer>
                 <AiOutlineDollar />
             </LogoContainer>
             <LoginContainer>
-                <Form onSubmit={() => {}}>
+                <Form onSubmit={() => signIn(email, password)}>
                     <h2>Login</h2>
                     <InputLabel>
                             <AiOutlineUser />
                             <Input
                                 maxLength={24}
-                                type="text"
                                 required
                                 placeholder="username"
+                                autoFocus
+                                onChange={(e) => setEmail(e.target.value)}
                             />
                     </InputLabel>
                     <InputLabel>
@@ -42,6 +50,7 @@ const SignIn: React.FC = () => {
                                 required
                                 type="password"
                                 placeholder="password"
+                                onChange={(e) => setPassword(e.target.value)}
                             />
                     </InputLabel>
                 <Button type="submit">Login</Button>
