@@ -79,3 +79,29 @@ export const SocialIcon = styled.a`
         }
     }
 `
+
+export const InputLabel = styled.label`
+    display: flex;
+    align-items: center;
+
+    height: 40px;
+
+    margin-bottom: 10px;
+
+    border-radius: 8px;
+    
+    background-color: #fff;
+
+    > svg {
+        width: 20px;
+        height: 20px;
+
+        margin: 0 5px;
+
+    }
+
+    > input::placeholder {
+        font-size: 11px;
+    }
+
+`

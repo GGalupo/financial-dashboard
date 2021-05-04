@@ -4,7 +4,8 @@ import Input from '../../components/Input'
 import Button from '../../components/Button'
 
 import { FaGithub, FaInstagram } from 'react-icons/fa'
-import { AiFillLinkedin, AiOutlineDollar } from 'react-icons/ai'
+import { AiFillLinkedin, AiOutlineDollar, AiOutlineUser } from 'react-icons/ai'
+import { BiLockAlt } from 'react-icons/bi'
 
 import {
     Container,
@@ -12,7 +13,8 @@ import {
     LoginContainer,
     Form,
     SocialIconsContainer,
-    SocialIcon
+    SocialIcon,
+    InputLabel
 } from './styles'
 
 const SignIn: React.FC = () => {
@@ -24,15 +26,24 @@ const SignIn: React.FC = () => {
             <LoginContainer>
                 <Form onSubmit={() => {}}>
                     <h2>Login</h2>
-                    <Input
-                        required
-                        placeholder="username"
-                    />
-                    <Input
-                        required
-                        type="password"
-                        placeholder="password"
-                    />
+                    <InputLabel>
+                            <AiOutlineUser />
+                            <Input
+                                maxLength={24}
+                                type="text"
+                                required
+                                placeholder="username"
+                            />
+                    </InputLabel>
+                    <InputLabel>
+                            <BiLockAlt />
+                            <Input
+                                maxLength={32}
+                                required
+                                type="password"
+                                placeholder="password"
+                            />
+                    </InputLabel>
                 <Button type="submit">Login</Button>
                 </Form>
                 <SocialIconsContainer>
@@ -46,13 +57,13 @@ const SignIn: React.FC = () => {
                         href="https://www.linkedin.com/in/ggalupo/"
                         target="_blank"
                     >
-                        <FaInstagram />
+                        <AiFillLinkedin />
                     </SocialIcon>
                     <SocialIcon
                         href="https://instagram.com/ggalupo"
                         target="_blank"
-                    >
-                        <AiFillLinkedin />
+                    >   
+                        <FaInstagram />
                     </SocialIcon>
                 </SocialIconsContainer>
             </LoginContainer>
