@@ -20,8 +20,8 @@ import {
 } from './styles'
 
 const SignIn: React.FC = () => {
-    const [email, setEmail] = useState<string>('')
-    const [password, setPassword] = useState<string>('')
+    const [username, setUsername] = useState<string>('demo')
+    const [password, setPassword] = useState<string>('demo1234')
 
     const { signIn } = useAuth()
 
@@ -31,7 +31,10 @@ const SignIn: React.FC = () => {
                 <AiOutlineDollar />
             </LogoContainer>
             <LoginContainer>
-                <Form onSubmit={() => signIn(email, password)}>
+                <Form onSubmit={(e) => {
+                    e.preventDefault()
+                    signIn(username, password)}}
+                >
                     <h2>Login</h2>
                     <InputLabel>
                             <AiOutlineUser />
@@ -39,8 +42,9 @@ const SignIn: React.FC = () => {
                                 maxLength={24}
                                 required
                                 placeholder="username"
+                                defaultValue="demo"
                                 autoFocus
-                                onChange={(e) => setEmail(e.target.value)}
+                                onChange={(e) => setUsername(e.target.value)}
                             />
                     </InputLabel>
                     <InputLabel>
@@ -49,6 +53,7 @@ const SignIn: React.FC = () => {
                                 maxLength={32}
                                 required
                                 type="password"
+                                defaultValue="demo1234"
                                 placeholder="password"
                                 onChange={(e) => setPassword(e.target.value)}
                             />

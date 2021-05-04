@@ -50,3 +50,24 @@ export const MenuItemLink = styled.a`
         margin-right: 7px;
     }
 `
+
+export const MenuItemButton = styled.button`
+    color: ${props => props.theme.colors.info};
+    background: none;
+    border: none;
+
+    font-size: 16px;
+
+    margin: 13px 0;
+    display: flex;
+    align-items: center;
+
+    &:hover {
+        opacity: 0.7;
+    }
+
+    > svg {
+        font-size: 20px;
+        margin-right: 7px;
+    }
+`

@@ -101,7 +101,7 @@ export const InputLabel = styled.label`
     }
 
     > input::placeholder {
-        font-size: 11px;
+        font-size: 12px;
     }
 
 `

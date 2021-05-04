@@ -2,7 +2,7 @@ import React, { createContext, useState, useContext } from 'react'
 
 interface IAuthContext {
     logged: boolean
-    signIn(email: string, password: string): void
+    signIn(username: string, password: string): void
     signOut(): void
 }
 
@@ -16,8 +16,8 @@ const AuthProvider: React.FC = ({ children }) => {
     })
 
 
-    const signIn = (email: string, password: string) => {
-        if (email === 'demo' && password === 'demo') {
+    const signIn = (username: string, password: string) => {
+        if (username === 'demo' && password === 'demo1234') {
             localStorage.setItem('@financial-dashboard:logged', 'true')
             setLogged(true)
         } else {

@@ -1,12 +1,24 @@
 import React from 'react'
+
 import { MdDashboard, MdArrowUpward, MdArrowDownward,
     MdExitToApp } from 'react-icons/md'
 import logoImg from '../../assets/logo.svg'
 
-import { Container, Header, LogoImg, Title,
-    MenuContainer,MenuItemLink } from './styles'
+import { useAuth } from '../../hooks/auth'
+
+import {
+    Container,
+    Header,
+    LogoImg,
+    Title,
+    MenuContainer,
+    MenuItemLink,
+    MenuItemButton
+} from './styles'
 
 const Aside: React.FC = () => {
+    const { signOut } = useAuth()
+
     return (
         <Container>
             <Header>
@@ -26,10 +38,10 @@ const Aside: React.FC = () => {
                 <MdArrowDownward />
                     Expenses
                 </MenuItemLink>
-                <MenuItemLink href="#">
+                <MenuItemButton onClick={signOut}>
                 <MdExitToApp />
                     Logout
-                </MenuItemLink>
+                </MenuItemButton>
             </MenuContainer>
         </Container>
     )
