@@ -10,6 +10,7 @@ export const Container = styled.div`
     background-color: ${props => props.theme.colors.tertiary};
 
     display: flex;
+    justify-content: space-between;
 
     @media(max-width: 950px) {
         width: 100%;
@@ -18,9 +19,9 @@ export const Container = styled.div`
 
 export const CardRight = styled.div`
     height: 100%;
-    padding: 15px 10px;
-
-    flex: 1;
+    padding: 20px 10px;
+    width: 150px;
+    margin: 0 auto;
 `
 
 export const CardLeft = styled.div`
@@ -29,6 +30,29 @@ export const CardLeft = styled.div`
     > h2 {
         margin-bottom: 10px;
         font-size: 25px;
+    }
+
+    @media(max-width: 300px) {
+        padding: 20px 15px 20px 20px;
+    }
+
+    @media(min-width: 540px) {
+        height: 90%;
+        align-self: center;
+        border-right: 2px solid gray;
+        padding-right: 50px;
+    }
+
+    @media(min-width: 1200px) {
+        padding-right: 100px;
+    }
+
+    @media(min-width: 1400px) {
+        padding-right: 150px;
+    }
+
+    @media(min-width: 1600px) {
+        padding-right: 200px;
     }
 `
 
@@ -51,6 +75,8 @@ export const Caption = styled.div`
 
         width: 40px;
         height: 40px;
+        min-width: 40px;
+        min-height: 40px;
         border-radius: 5px;
 
         font-size: 12px;
@@ -66,5 +92,11 @@ export const Caption = styled.div`
         font-weight: 500;
 
         margin-left: 8px;
+    }
+
+    @media(max-width: 300px) {
+        > span {
+            font-size: 11px;
+        }
     }
 `
