@@ -17,7 +17,7 @@ export const LogoContainer = styled.div`
     margin-bottom: 20px;
 
     > svg {
-        color: #5f9341;
+        color: ${props => props.theme.colors.info};
 
         width: 80px;
         height: 80px;
