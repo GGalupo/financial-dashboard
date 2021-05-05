@@ -15,6 +15,14 @@ export const Container = styled.div`
     border-radius: 8px;
 
     display: flex;
+
+    @media(max-width: 950px) {
+        width: 100%;
+    }
+
+    @media(max-width: 400px) {
+        flex-direction: column;
+    }
 `
 
 export const CardLeft = styled.div`
@@ -35,14 +43,28 @@ export const CardLeft = styled.div`
         color: ${props => props.theme.colors.gray};
         font-style: italic;
     }
+
+    @media(max-width: 400px) {
+        flex-direction: row;
+        
+
+        > span {
+            display: none;
+        }
+    }
 `
 
 export const CardRight = styled.div`
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
     flex: 1;
+
+    @media(max-width: 400px) {
+        height: 150px;
+        margin-bottom: 40px;
+        
+        > span {
+            display: none;
+        }
+    }
 `
 
 export const CaptionContainer = styled.ul`
@@ -53,8 +75,6 @@ export const Caption = styled.li<ICaptionProps>`
     display: flex;
     align-items: center;
 
-
-
     > div {
         background-color: ${props => props.color};
 
@@ -62,12 +82,18 @@ export const Caption = styled.li<ICaptionProps>`
         height: 40px;
         border-radius: 5px;
 
-        font-size: 13px;
+        font-size: 11px;
         font-weight: 600;
 
         display: flex;
         align-items: center;
         justify-content: center;
+
+        @media(max-width: 400px) {
+            width: 45px;
+            height: 45px;
+            font-size: 13px;
+        }
     }
 
     > span {
@@ -75,5 +101,9 @@ export const Caption = styled.li<ICaptionProps>`
         font-weight: 500;
 
         margin-left: 8px;
+
+        @media(max-width: 400px) {
+            display: none;
+        }
     }
 `

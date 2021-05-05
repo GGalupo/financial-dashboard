@@ -14,6 +14,10 @@ export const Container = styled.div`
     margin: 10px 0;
     padding: 15px 20px 25px 20px;
     border-radius: 8px;
+
+    @media(max-width: 950px) {
+        width: 100%;
+    }
 `
 
 export const CardHeader = styled.div`

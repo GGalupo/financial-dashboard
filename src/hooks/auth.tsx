@@ -14,7 +14,6 @@ const AuthProvider: React.FC = ({ children }) => {
 
         return !!isLogged
     })
-
     
     const signIn = (username: string, password: string) => {
         if (username === 'demo' && password === 'demo1234') {

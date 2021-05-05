@@ -33,6 +33,9 @@ export const CaptionContainer = styled.ul`
     list-style: none;
     display: flex;
 
+    @media(max-width: 410px) {
+        display: none;
+    }
 `
 
 export const Caption = styled.li<ICaptionProps>`

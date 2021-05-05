@@ -48,4 +48,8 @@ export const Container = styled.div<IContainerProps>`
         bottom: 10px;
     }
 
+    @media(max-width: 950px) {
+        width: 100%;
+    }
+
 `

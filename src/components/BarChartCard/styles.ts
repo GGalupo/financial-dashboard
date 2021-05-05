@@ -10,6 +10,10 @@ export const Container = styled.div`
     background-color: ${props => props.theme.colors.tertiary};
 
     display: flex;
+
+    @media(max-width: 950px) {
+        width: 100%;
+    }
 `
 
 export const CardRight = styled.div`

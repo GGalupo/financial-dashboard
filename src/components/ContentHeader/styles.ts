@@ -11,6 +11,10 @@ export const Container = styled.div`
     justify-content: space-between;
 
     margin-bottom: 25px;
+
+    @media(max-width: 500px) {
+        flex-direction: column;
+    }
 `
 
 export const TitleContainer = styled.div<ITitleContainerProps>`
@@ -25,8 +29,17 @@ export const TitleContainer = styled.div<ITitleContainerProps>`
         border-bottom: 10px solid ${props => props.lineColor};
         margin-top: 2px;
     }
+
+    @media(max-width: 500px) {
+        margin-bottom: 25px;
+    }
 `
 
 export const Controllers = styled.div`
     display: flex;
+
+    @media(max-width: 500px) {
+        margin: 0 auto;
+        justify-content: center;
+    }
 `
