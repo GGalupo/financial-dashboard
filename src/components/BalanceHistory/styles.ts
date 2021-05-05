@@ -6,35 +6,56 @@ interface ICaptionProps {
 
 export const Container = styled.div`
     width: 100%;
-    height: 320px;
+
+    display: flex;
+    flex-direction: column;
 
     background-color: ${props => props.theme.colors.tertiary};
     color: ${props => props.theme.colors.white};
 
     margin: 10px 0;
-    padding: 15px 20px 30px 20px;
+    padding: 15px 20px 0;
 
     border-radius: 8px;
 `
 
 export const Header = styled.div`
-    > h2 {
-        margin: 5px 0 15px 5px;
-        font-size: 25px;
-    }
+    width: 100%;
 
     display: flex;
     justify-content: space-between;
 
+    margin-bottom: 45px;
+
+    > h2 {
+        font-size: 25px;
+        margin: 7px 10px 10px;
+    }
+
+    @media(max-width: 420px) {
+        flex-direction: column;
+    }
+
+    @media(max-width: 300px) {
+        > h2 {
+            font-size: 24px;
+            margin: 5px;
+        }
+    }
+`
+
+export const ChartContainer = styled.div`
     width: 100%;
+    height: 260px;
 `
 
 export const CaptionContainer = styled.ul`
     list-style: none;
     display: flex;
 
-    @media(max-width: 410px) {
-        display: none;
+    @media(max-width: 420px) {
+        margin-top: 10px;
+        margin-left: 10px;
     }
 `
 
@@ -58,5 +79,22 @@ export const Caption = styled.li<ICaptionProps>`
         font-weight: 500;
 
         margin-left: 6px;
+    }
+
+    @media(max-width: 420px) {
+        > div {
+            background-color: ${props => props.color};
+
+            width: 23px;
+            height: 23px;
+            border-radius: 5px;
+        }
+
+        > span {
+            font-size: 13px;
+            font-weight: 500;
+
+            margin-left: 6px;
+        }
     }
 `

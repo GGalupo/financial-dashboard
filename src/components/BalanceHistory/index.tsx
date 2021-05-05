@@ -1,12 +1,12 @@
 import React from 'react'
 
 import {
-    ResponsiveContainer,
     LineChart,
     Line,
     XAxis,
     CartesianGrid,
-    Tooltip
+    Tooltip,
+    ResponsiveContainer
 } from 'recharts'
 
 import formatCurrency from '../../utils/formatCurrency'
@@ -14,6 +14,7 @@ import formatCurrency from '../../utils/formatCurrency'
 import {
     Container,
     Header,
+    ChartContainer,
     CaptionContainer,
     Caption
 } from './styles'
@@ -47,31 +48,38 @@ const BalanceHistory: React.FC<IBalanceHistoryProps> = ({
             </CaptionContainer>
         </Header>
 
-        <ResponsiveContainer>
-            <LineChart data={data} margin={{ top: 0, right: 15, left: 15, bottom: 20}}>
-                <CartesianGrid horizontal={false} vertical={false} strokeDasharray="3 3" stroke="#cecece" />
-                <XAxis dataKey="monthName" stroke="#cecece" />
-                <Tooltip formatter={formatCurrency} />
-                <Line
-                    type="monotone"
-                    dataKey="monthIncome"
-                    name="Income"
-                    stroke={lineColorIncome}
-                    strokeWidth={5}
-                    dot={{ r: 5 }}
-                    activeDot={{ r: 8 }}
-                />
-                <Line
-                    type="monotone"
-                    dataKey="monthExpenses"
-                    name="Expenses"
-                    stroke={lineColorExpenses}
-                    strokeWidth={5}
-                    dot={{ r: 5 }}
-                    activeDot={{ r: 8 }}
-                />
-            </LineChart>
-        </ResponsiveContainer>
+        <ChartContainer>
+            <ResponsiveContainer>
+                <LineChart data={data} margin={{ top: 5, right: 15, left: 15, bottom: 5}}>
+                    <CartesianGrid
+                        horizontal={false}
+                        vertical={false}
+                        strokeDasharray="3 3"
+                        stroke="#cecece"
+                    />
+                    <XAxis dataKey="monthName" stroke="#cecece" />
+                    <Tooltip formatter={formatCurrency} />
+                    <Line
+                        type="monotone"
+                        dataKey="monthIncome"
+                        name="Income"
+                        stroke={lineColorIncome}
+                        strokeWidth={5}
+                        dot={{ r: 5 }}
+                        activeDot={{ r: 8 }}
+                    />
+                    <Line
+                        type="monotone"
+                        dataKey="monthExpenses"
+                        name="Expenses"
+                        stroke={lineColorExpenses}
+                        strokeWidth={5}
+                        dot={{ r: 5 }}
+                        activeDot={{ r: 8 }}
+                    />
+                </LineChart>
+            </ResponsiveContainer>
+        </ChartContainer>
     </Container>
 )
 

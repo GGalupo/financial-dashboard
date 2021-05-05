@@ -46,10 +46,14 @@ export const CardLeft = styled.div`
 
     @media(max-width: 400px) {
         flex-direction: row;
+        position: relative;
+        padding-bottom: 0;
         
 
         > span {
-            display: none;
+            position: absolute;
+            bottom: -180px;
+            font-size: 12px;
         }
     }
 `
@@ -59,7 +63,7 @@ export const CardRight = styled.div`
 
     @media(max-width: 400px) {
         height: 150px;
-        margin-bottom: 40px;
+        margin-bottom: 50px;
         
         > span {
             display: none;
