@@ -50,6 +50,7 @@ const PieChartCard: React.FC<IPieChartCardProps> = ({ data }) => (
                 </PieChart>
             </ResponsiveContainer>
         </CardRight>
+        <span>Based on total income.</span>
     </Container>
 )
 

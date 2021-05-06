@@ -37,7 +37,7 @@ export const CardLeft = styled.div`
     }
 
     @media(min-width: 540px) {
-        height: 90%;
+        height: 80%;
         align-self: center;
         border-right: 2px solid gray;
         padding-right: 50px;

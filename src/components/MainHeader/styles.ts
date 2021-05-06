@@ -1,5 +1,4 @@
 import styled from 'styled-components'
-import ToggleComponent from '../Toggle'
 
 export const Container = styled.div`
     grid-area: main-header;
@@ -13,23 +12,40 @@ export const Container = styled.div`
 
     padding: 0 20px;
 
-    border-bottom: 1px solid ${props => props.theme.colors.gray}
+    border-bottom: 1px solid ${props => props.theme.colors.gray};
 `
 
 export const Profile = styled.div`
-    color: ${props => props.theme.colors.white}
+    color: ${props => props.theme.colors.white};
 `
 
-export const Toggle = styled(ToggleComponent)`
+export const ToggleThemeContainer = styled.div`
     @media(max-width: 767px) {
         display: none;
     }
 `
 
-export const Welcome = styled.h3`
-    
-`
+export const ToggleMenuButton = styled.button`
+    background: none;
+    color: white;
 
-export const UserName = styled.span`
-    
+    &:hover {
+        transition: opacity 0.2s;
+        opacity: 0.7;
+    }
+
+    > svg {
+        width: 37px;
+        height: 37px;
+
+        padding: 5px;
+
+        border-radius: 6px;
+
+        background-color: ${props => props.theme.colors.info};
+
+        @media(min-width: 767px) {
+            display: none;
+        }
+    }
 `

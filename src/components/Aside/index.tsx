@@ -9,8 +9,8 @@ import {
 import { AiOutlineDollar, AiFillLinkedin, AiFillCloseSquare } from 'react-icons/ai'
 import { FaGithub, FaInstagram } from 'react-icons/fa'
 
-
 import { useAuth } from '../../hooks/auth'
+import { useMenu } from '../../hooks/menu'
 
 import {
     Container,
@@ -19,6 +19,7 @@ import {
     MenuContainer,
     MenuItemLink,
     MenuItemButton,
+    CloseMenuButton,
     CreditsContainer,
     SocialIconsContainer,
     SocialIcon
@@ -26,9 +27,10 @@ import {
 
 const Aside: React.FC = () => {
     const { signOut } = useAuth()
+    const { isMenuOpen, toggleMenuOpen } = useMenu()
 
     return (
-        <Container isMenuOpen={false}>
+        <Container isMenuOpen={isMenuOpen}>
             <Header>
                 <AiOutlineDollar />
                 <Title>Financial Dashboard</Title>
@@ -50,7 +52,9 @@ const Aside: React.FC = () => {
                 <MdExitToApp />
                     Logout
                 </MenuItemButton>
-                <AiFillCloseSquare />
+                <CloseMenuButton onClick={toggleMenuOpen}>
+                    <AiFillCloseSquare />
+                </CloseMenuButton>
                 <CreditsContainer>
                     <SocialIconsContainer>
                         <SocialIcon

@@ -16,12 +16,30 @@ export const Container = styled.div`
 
     display: flex;
 
+    position: relative;
+
+    > span {
+        display: none;
+
+        position: absolute;
+        bottom: 15px;
+        left: 15px;
+
+        font-size: 13px;
+        color: ${props => props.theme.colors.gray};
+        font-style: italic;
+    }
+
     @media(max-width: 950px) {
         width: 100%;
     }
 
     @media(max-width: 400px) {
         flex-direction: column;
+
+        > span {
+            display: inline;
+        }
     }
 `
 
@@ -45,29 +63,24 @@ export const CardLeft = styled.div`
     }
 
     @media(max-width: 400px) {
+        height: 80px;
         flex-direction: row;
         position: relative;
         padding-bottom: 0;
         
-
         > span {
-            position: absolute;
-            bottom: -180px;
-            font-size: 12px;
+            display: none;
         }
     }
 `
 
 export const CardRight = styled.div`
     flex: 1;
+    justify-content: center;
+    align-items: center;
 
     @media(max-width: 400px) {
-        height: 150px;
-        margin-bottom: 50px;
-        
-        > span {
-            display: none;
-        }
+        margin-bottom: 40px;
     }
 `
 

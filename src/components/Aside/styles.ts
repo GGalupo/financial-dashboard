@@ -54,25 +54,6 @@ export const MenuContainer = styled.nav`
 
     display: flex;
     flex-direction: column;
-
-    > svg {
-        width: 22px;
-        height: 22px;
-
-        margin: 5px 12px 0 auto;
-
-        color: ${props => props.theme.colors.warning};
-
-        &:hover {
-            cursor: pointer;
-            transition: opacity 0.3s;
-            opacity: 0.7;
-        }
-
-        @media(min-width: 767px) {
-            display: none;
-        }
-    }
 `
 
 export const MenuItemLink = styled.a`
@@ -114,6 +95,33 @@ export const MenuItemButton = styled.button`
     > svg {
         font-size: 20px;
         margin-right: 7px;
+    }
+`
+
+export const CloseMenuButton = styled.button`
+    background: none;
+
+    align-self: flex-end;
+
+    > svg {
+        width: 22px;
+        height: 22px;
+
+        border-radius: 15px;
+
+        margin: 10px 15px 0 0;
+
+        color: ${props => props.theme.colors.warning};
+
+        &:hover {
+            cursor: pointer;
+            transition: opacity 0.3s;
+            opacity: 0.7;
+        }
+
+        @media(min-width: 767px) {
+            display: none;
+        }
     }
 `
 
