@@ -21,7 +21,7 @@ export const Container = styled.div`
 `
 
 export const CardHeader = styled.div`
-    h3 {
+    > h3 {
         font-size: 36px;
     }
 
@@ -33,10 +33,31 @@ export const CardHeader = styled.div`
     p {
         font-size: 20px;
     }
+
+    @media(max-width: 320px) {
+        > h3 {
+            font-size: 32px;
+        }
+
+        > h3 img {
+            width: 30px;
+            margin-left: 5px;
+        }
+
+        p {
+            font-size: 16px;
+        }
+    }
 `
 
 export const CardFooter = styled.div`
     span {
         color: ${props => props.theme.colors.gray}
+    }
+
+    @media(max-width: 320px) {
+        span {
+            font-size: 14px;
+        }
     }
 `

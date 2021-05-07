@@ -1,6 +1,10 @@
 import React from 'react'
 
-import { Container, Tag } from './styles'
+import {
+    Container,
+    Tag,
+    TitleContainer
+} from './styles'
 
 interface IFinancialCardProps {
     tagColor: string
@@ -14,10 +18,10 @@ const FinancialCard: React.FC<IFinancialCardProps> = ({
 }) => (
     <Container>
         <Tag color={tagColor} />
-        <div>
+        <TitleContainer>
             <span>{title}</span>
             <small>{subtitle}</small>
-        </div>
+        </TitleContainer>
         <h3>{amount}</h3>
     </Container>
 )

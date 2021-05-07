@@ -7,9 +7,10 @@ export const Container = styled.li`
     background-color: ${props => props.theme.colors.tertiary};
     
     list-style: none;
-    border-radius: 5px;
+
     margin: 10px 0;
     padding: 13px 13px;
+    border-radius: 5px;
 
     display: flex;
     justify-content: space-between;
@@ -26,18 +27,13 @@ export const Container = styled.li`
         transform: translateX(5px);
     }
 
-    > div {
-        display: flex;
-        flex-direction: column;
-        justify-content: space-around;
-        padding-left: 8px;   
+    h3 {
+        margin-left: 15px;
     }
 
-    > div > small {
-        font-size: .7rem;
-        margin-top: 2px;
+    @media(max-width: 320px) {
+        font-size: 14px;
     }
-
 `
 
 export const Tag = styled.div<ITagProps>`
@@ -48,4 +44,22 @@ export const Tag = styled.div<ITagProps>`
 
     position: absolute;
     left: 2px;
+`
+
+export const TitleContainer = styled.div`
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    padding-left: 8px;
+
+    flex: 1;
+
+    white-space: nowrap;
+    overflow-x: scroll;
+
+    small {
+        font-size: .7rem;
+        margin-top: 2px;
+    }
 `
