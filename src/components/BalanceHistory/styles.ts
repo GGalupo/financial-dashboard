@@ -1,8 +1,22 @@
-import styled from 'styled-components'
+import styled, { keyframes } from 'styled-components'
 
 interface ICaptionProps {
     color: string
 }
+
+const animate = keyframes`
+    0% {
+        transform: translateX(-100px);
+        opacity: 0;
+    }
+    50% {
+        opacity: 0.3;
+    }
+    100% {
+        transform: translateX(0)
+        opacity: 1;
+    }
+`
 
 export const Container = styled.div`
     width: 100%;
@@ -17,6 +31,8 @@ export const Container = styled.div`
     padding: 15px 20px 0;
 
     border-radius: 8px;
+
+    animation: ${animate} .5s;
 `
 
 export const Header = styled.div`
