@@ -58,6 +58,13 @@ export const TitleContainer = styled.div`
     white-space: nowrap;
     overflow-x: scroll;
 
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+
+    &::-webkit-scrollbar {
+        display: none;
+    }
+
     small {
         font-size: .7rem;
         margin-top: 2px;

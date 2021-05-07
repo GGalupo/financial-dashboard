@@ -125,7 +125,16 @@ export const CloseMenuButton = styled.button`
     }
 `
 
-export const CreditsContainer = styled.div`
+export const ToggleThemeContainer = styled.div`
+    display: none;
+
+    @media(max-width: 767px) {
+        display: inline;
+        margin-bottom: 35px;
+    }
+`
+
+export const AsideFooter = styled.div`
     align-self: center;
     margin-top: auto;
 

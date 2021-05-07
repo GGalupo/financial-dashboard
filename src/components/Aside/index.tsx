@@ -6,11 +6,18 @@ import {
     MdArrowDownward,
     MdExitToApp
 } from 'react-icons/md'
-import { AiOutlineDollar, AiFillLinkedin, AiFillCloseSquare } from 'react-icons/ai'
+import {
+    AiOutlineDollar,
+    AiFillLinkedin,
+    AiFillCloseSquare
+} from 'react-icons/ai'
 import { FaGithub, FaInstagram } from 'react-icons/fa'
+
+import ToggleTheme from '../Toggle'
 
 import { useAuth } from '../../hooks/auth'
 import { useMenu } from '../../hooks/menu'
+import { useTheme } from '../../hooks/theme'
 
 import {
     Container,
@@ -20,14 +27,20 @@ import {
     MenuItemLink,
     MenuItemButton,
     CloseMenuButton,
-    CreditsContainer,
+    ToggleThemeContainer,
+    AsideFooter,
     SocialIconsContainer,
     SocialIcon
 } from './styles'
 
 const Aside: React.FC = () => {
     const { signOut } = useAuth()
+    const { theme, toggleTheme } = useTheme()
     const { isMenuOpen, toggleMenuOpen } = useMenu()
+
+    const handleThemeChange = () => {
+        toggleTheme()
+    }
 
     return (
         <Container isMenuOpen={isMenuOpen}>
@@ -55,7 +68,15 @@ const Aside: React.FC = () => {
                 <CloseMenuButton onClick={toggleMenuOpen}>
                     <AiFillCloseSquare />
                 </CloseMenuButton>
-                <CreditsContainer>
+                <AsideFooter>
+                    <ToggleThemeContainer>
+                        <ToggleTheme
+                            leftLabel="Light"
+                            rightLabel="Dark"
+                            checked={theme.title === "dark" ? true : false}
+                            onChange={handleThemeChange}
+                        />
+                    </ToggleThemeContainer>
                     <SocialIconsContainer>
                         <SocialIcon
                             href="https://github.com/GGalupo"
@@ -77,7 +98,7 @@ const Aside: React.FC = () => {
                         </SocialIcon>
                     </SocialIconsContainer>
                     <span>Made with ❤️ by <strong>GGalupo</strong></span>
-                </CreditsContainer>
+                </AsideFooter>
             </MenuContainer>
         </Container>
     )

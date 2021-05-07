@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from 'react'
+import React, { useMemo } from 'react'
 
 import { useTheme } from '../../hooks/theme'
 import { useMenu } from '../../hooks/menu'
@@ -20,14 +20,11 @@ const MainHeader: React.FC = () => {
     const { toggleTheme, theme } = useTheme()
     const { toggleMenuOpen } = useMenu()
 
-    const [darkTheme, setDarkTheme] = useState(() => theme.title === 'dark' ? true : false)
-
     const handleToggleMenu = () => {
         toggleMenuOpen()
     }
 
     const handleThemeChange = () => {
-        setDarkTheme(!darkTheme)
         toggleTheme()
     }
 
@@ -42,7 +39,7 @@ const MainHeader: React.FC = () => {
                 <ToggleTheme
                     leftLabel="Light"
                     rightLabel="Dark"
-                    checked={darkTheme}
+                    checked={theme.title === "dark" ? true : false}
                     onChange={handleThemeChange}
                 />
             </ToggleThemeContainer>
