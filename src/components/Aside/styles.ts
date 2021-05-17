@@ -39,11 +39,11 @@ export const Header = styled.div`
 export const Title = styled.h3`
     color: ${props => props.theme.colors.white};
     margin-left: 10px;
-    font-size: 16px;
+    font-size: 18px;
 
     
     @media(max-width: 767px) {
-        font-size: 14px;
+        font-size: 15px;
         margin-right: 20px;
     }
 `
@@ -147,6 +147,10 @@ export const AsideFooter = styled.div`
 
         > strong {
             color: ${props => props.theme.colors.info}
+        }
+
+        @media(max-width: 767px) {
+            font-size: 13px;
         }
     }
 `

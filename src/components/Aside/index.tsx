@@ -46,7 +46,7 @@ const Aside: React.FC = () => {
         <Container isMenuOpen={isMenuOpen}>
             <Header>
                 <AiOutlineDollar />
-                <Title>Financial Dashboard</Title>
+                <Title>GG Finances</Title>
             </Header>
             <MenuContainer>
                 <MenuItemLink href="/">
